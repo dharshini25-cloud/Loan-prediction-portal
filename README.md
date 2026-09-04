@@ -1,8 +1,8 @@
-\# Loan Management Portal with AI-Based Eligibility Predictor
+ Loan Management Portal with AI-Based Eligibility Predictor
 
 
 
-\## 📌 Project Overview
+📌 Project Overview
 
 
 
@@ -22,7 +22,7 @@ The application combines a Django web interface, Machine Learning prediction, an
 
 
 
-\## 🎯 Objectives
+🎯 Objectives
 
 
 
@@ -44,11 +44,11 @@ The application combines a Django web interface, Machine Learning prediction, an
 
 
 
-\## 🚀 Features
+ 🚀 Features
 
 
 
-\### 1. Loan Application
+ 1. Loan Application
 
 
 
