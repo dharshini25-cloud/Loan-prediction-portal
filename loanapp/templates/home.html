@@ -1,0 +1,767 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loan Management Portal</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(135deg, #eef2ff, #f8fafc, #e0f2fe);
+            color: #1e293b;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+
+        .logo i {
+            margin-right: 8px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background: #4f46e5;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #3730a3;
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero {
+            text-align: center;
+            padding: 55px 20px 30px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 750;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: #4f46e5;
+        }
+
+        .hero p {
+            color: #64748b;
+            font-size: 16px;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+
+        /* ================= MAIN CARD ================= */
+
+        .container {
+            width: 90%;
+            max-width: 950px;
+            margin: 20px auto 60px;
+        }
+
+        .loan-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+            border: 1px solid rgba(255,255,255,0.7);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .card-title i {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef2ff;
+            color: #4f46e5;
+            border-radius: 12px;
+        }
+
+        .card-title h2 {
+            font-size: 22px;
+        }
+
+        .card-title p {
+            color: #64748b;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+
+        /* ================= FORM GRID ================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px 14px 13px 42px;
+            border: 1px solid #dbe1ea;
+            border-radius: 11px;
+            outline: none;
+            background: #f8fafc;
+            font-size: 14px;
+            color: #334155;
+            transition: 0.3s;
+        }
+
+        select {
+            padding-left: 42px;
+            cursor: pointer;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #6366f1;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(99,102,241,0.1);
+        }
+
+
+        /* ================= PREDICT BUTTON ================= */
+
+        .button-area {
+            margin-top: 30px;
+        }
+
+        .predict-btn {
+            width: 100%;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .predict-btn i {
+            margin-right: 8px;
+        }
+
+        .predict-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(79,70,229,0.3);
+        }
+
+        .predict-btn:active {
+            transform: translateY(0);
+        }
+
+
+        /* ================= RESULT ================= */
+
+        .result {
+            margin-top: 28px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: 700;
+            background: #f8fafc;
+        }
+
+        .result:empty {
+            display: none;
+        }
+
+
+        /* ================= INFO SECTION ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            background: white;
+            padding: 22px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(15,23,42,0.06);
+        }
+
+        .feature i {
+            font-size: 25px;
+            color: #4f46e5;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .feature p {
+            font-size: 12px;
+            color: #64748b;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 700px) {
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .loan-card {
+                padding: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                padding: 15px 5%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-building-columns"></i>
+        Loan<span>AI</span>
+    </div>
+
+    <a href="{% url 'dashboard' %}" class="nav-btn">
+        <i class="fa-solid fa-chart-line"></i>
+        Dashboard
+    </a>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h1>
+        Smart <span>Loan Eligibility</span>
+    </h1>
+
+    <p>
+        Get an instant loan eligibility prediction using
+        machine learning technology.
+    </p>
+
+</section>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+    <div class="loan-card">
+
+        <div class="card-title">
+
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+
+            <div>
+                <h2>Loan Application</h2>
+
+                <p>
+                    Enter applicant information to predict eligibility
+                </p>
+            </div>
+
+        </div>
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <div class="form-grid">
+
+
+                <!-- Gender -->
+
+                <div class="form-group">
+
+                    <label>Gender</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <select name="gender">
+
+                            <option value="Male">
+                                Male
+                            </option>
+
+                            <option value="Female">
+                                Female
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Married -->
+
+                <div class="form-group">
+
+                    <label>Married</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-ring"></i>
+
+                        <select name="married">
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Dependents -->
+
+                <div class="form-group">
+
+                    <label>Dependents</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-people-group"></i>
+
+                        <input
+                            type="number"
+                            name="dependents"
+                            min="0"
+                            max="3"
+                            placeholder="Number of dependents"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Education -->
+
+                <div class="form-group">
+
+                    <label>Education</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                        <select name="education">
+
+                            <option value="Graduate">
+                                Graduate
+                            </option>
+
+                            <option value="Not Graduate">
+                                Not Graduate
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Self Employed -->
+
+                <div class="form-group">
+
+                    <label>Self Employed</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-briefcase"></i>
+
+                        <select name="self_employed">
+
+                            <option value="Yes">
+                                Yes
+                            </option>
+
+                            <option value="No">
+                                No
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Applicant Income -->
+
+                <div class="form-group">
+
+                    <label>Applicant Income</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                        <input
+                            type="text"
+                            name="applicant_income"
+                            placeholder="₹1,00,000"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Coapplicant Income -->
+
+                <div class="form-group">
+
+                    <label>Coapplicant Income</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                        <input
+                            type="text"
+                            name="coapplicant_income"
+                            placeholder="₹50,000"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Loan Amount -->
+
+                <div class="form-group">
+
+                    <label>Loan Amount</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-money-bill-wave"></i>
+
+                        <input
+                            type="text"
+                            name="loan_amount"
+                            placeholder="₹2,00,000"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Loan Term -->
+
+                <div class="form-group">
+
+                    <label>Loan Term</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-calendar-days"></i>
+
+                        <input
+                            type="number"
+                            name="loan_term"
+                            placeholder="360"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Credit History -->
+
+                <div class="form-group">
+
+                    <label>Credit History</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-credit-card"></i>
+
+                        <select name="credit_history">
+
+                            <option value="1">
+                                Good (1)
+                            </option>
+
+                            <option value="0">
+                                Poor (0)
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Property Area -->
+
+                <div class="form-group">
+
+                    <label>Property Area</label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <select name="property_area">
+
+                            <option value="Urban">
+                                Urban
+                            </option>
+
+                            <option value="Semiurban">
+                                Semiurban
+                            </option>
+
+                            <option value="Rural">
+                                Rural
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <div class="button-area">
+
+                <button
+                    type="submit"
+                    class="predict-btn"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Predict Loan Eligibility
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+        <!-- RESULT -->
+
+        <div class="result">
+
+            {{ result }}
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <div class="features">
+
+        <div class="feature">
+
+            <i class="fa-solid fa-brain"></i>
+
+            <h3>AI Powered</h3>
+
+            <p>
+                Machine learning based prediction
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-bolt"></i>
+
+            <h3>Instant Prediction</h3>
+
+            <p>
+                Get results within seconds
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <h3>Secure Data</h3>
+
+            <p>
+                Applicant information is securely stored
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 LoanAI | AI-Based Loan Management Portal
+
+</footer>
+
+
+</body>
+
+</html>
+

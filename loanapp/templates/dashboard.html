@@ -1,0 +1,105 @@
+```html
+<form method="POST">
+    {% csrf_token %}
+
+    Gender:
+    <select name="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+    <br><br>
+
+
+    Married:
+    <select name="married">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+    <br><br>
+
+
+    Dependents:
+    <input type="number" name="dependents" min="0" max="3">
+    <br><br>
+
+
+    Education:
+    <select name="education">
+        <option value="Graduate">Graduate</option>
+        <option value="Not Graduate">Not Graduate</option>
+    </select>
+    <br><br>
+
+
+    Self Employed:
+    <select name="self_employed">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+    </select>
+    <br><br>
+
+
+    Applicant Income:
+    <input
+        type="text"
+        name="applicant_income"
+        placeholder="₹1,00,000"
+        required
+    >
+    <br><br>
+
+
+    Coapplicant Income:
+    <input
+        type="text"
+        name="coapplicant_income"
+        placeholder="₹50,000"
+        required
+    >
+    <br><br>
+
+
+    Loan Amount:
+    <input
+        type="text"
+        name="loan_amount"
+        placeholder="₹2,00,000"
+        required
+    >
+    <br><br>
+
+
+    Loan Term:
+    <input
+        type="number"
+        name="loan_term"
+        placeholder="360"
+        required
+    >
+    <br><br>
+
+
+    Credit History:
+    <select name="credit_history" required>
+        <option value="1">1 - Good</option>
+        <option value="0">0 - Bad</option>
+    </select>
+    <br><br>
+
+
+    Property Area:
+    <select name="property_area">
+        <option value="Urban">Urban</option>
+        <option value="Semiurban">Semiurban</option>
+        <option value="Rural">Rural</option>
+    </select>
+    <br><br>
+
+
+    <button type="submit">Predict</button>
+
+</form>
+
+
+<h2>{{ result }}</h2>
+```

@@ -1,0 +1,7 @@
+Django==4.2.30
+pandas==3.0.3
+numpy==2.4.2
+scikit-learn==1.9.0
+joblib==1.5.3
+scipy==1.17.1
+gunicorn==25.0.0
