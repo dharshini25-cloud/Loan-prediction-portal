@@ -80,7 +80,7 @@ Users can enter important applicant information such as:
 
 
 
-\### 2. AI-Based Loan Eligibility Prediction
+2. AI-Based Loan Eligibility Prediction
 
 
 
@@ -98,7 +98,7 @@ The result is displayed to the user as:
 
 
 
-\### 3. Database Management
+ 3. Database Management
 
 
 
@@ -110,7 +110,7 @@ The stored information can be viewed and managed through the database system.
 
 
 
-\### 4. Dashboard
+ 4. Dashboard
 
 
 
@@ -122,7 +122,7 @@ The application provides a dashboard for viewing loan-related information and pr
 
 
 
-\## 🤖 Machine Learning
+ 🤖 Machine Learning
 
 
 
@@ -142,11 +142,11 @@ The trained model is stored using the Joblib library and loaded by the Django ap
 
 
 
-\### Prediction Process
+ Prediction Process
 
 
 
-```text
+
 
 User enters applicant details
 
@@ -177,4 +177,26 @@ Prediction result is displayed
 &#x20;           ↓
 
 Application details are stored in MySQL
+
+Project Overview:
+
+Applicant
+    ↓
+Enter Loan Details
+    ↓
+Django Web Application
+    ↓
+Input Data Preprocessing
+    ↓
+Categorical Encoding
+    ↓
+Machine Learning Model
+    ↓
+Loan Eligibility Prediction
+    ↓
+Approved / Not Approved
+    ↓
+Store Application in MySQL
+    ↓
+View Records in Dashboard
 
